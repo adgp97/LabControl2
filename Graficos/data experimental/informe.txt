@@ -1,0 +1,24 @@
+Controlador P.
+
+La respuesta del sistema muestra oscilaciones que pueden ser consideradas como sosteniadas (constantes) si se tiene en cuenta el ruido que presenta el sistema, el cual no es modelado en la función de transferencia del modelo en simulink, razon por la cual se observan variaciones en la amplitud. El efecto del ruido del sistema puede verse en la respuesta a lazo abierto. 
+
+Puesto que presenta oscilaciones sostenidas, se tiene que el valor de Kp de este controlador corresponde a la ganancia critica Kc a partir de la cual se deben calcular los parametros de los controladores según el segundo método de Ziegler-Nichols. La razon de que esto ocurriera puede deberse a que la función de transferencia del modelo en simulink no corresponde a la función de trnasferencia del sistema real.
+
+
+Controlador PI.
+
+Para la primera parte de la respuesta, antes del escalon a los 30 segundos, se observan oscilaciones cuya amplitud aumenta a medida que transcurre el tiempo indicando comportamiento inestable, llegando a mantenerse constantes aproximadamente a los 25 segundos. En el modelo de Matlab se obtuvo que, al introducir un controlador PI, el sistema se volvia completamente inestable, mostrando oscilaciones cuyas amplitudes crecían exponencialmente. 
+
+Los resultados experimentales y teóricos (simulación) coinciden en tendecia bajo la suposición de que el sistema real tiene un sistema auxiliar que actúa como un limitador a la entrada que impide que se dañen los componentes.
+
+Controlador PID.
+
+En este caso, el resultado obtenido es muy similar al de la simulación. El sistema real presenta un máximo pido de 116,7 rpm frente a los 118,1 rpm del modelo en Matlab; un tiempo pico de 30,68 segundos, siendo menor al de la simulacion (30,81 segundos); y el tiempo en que alcanza el estado estacionario, según el critero del 2%, es 30,97 segundos mientras que el de la simulación era de 31,43 segundos. 
+
+Cabe destacar que los efectos del ruido pueden haber intervenido en la respuesta del sistema de modo que las amplitudes cambiaran y, en consecuencia, los puntos de donde tomar los datos del tiempo de establecimiento, el maximo pico y el tiempo pico, razón por la cual los valores obtenidos se encuentran muy cerca a los de la simulación.
+
+
+
+Conclusion general
+
+Como es de esperarse, el controlador que mejora más los resultados es el PID ya que permite modificar tanto la parte transitoria como la parte en el estado estacionario de la respuesta temporal de un sistema.
