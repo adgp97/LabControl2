@@ -21,13 +21,36 @@ W = 1.49:0.001:1.61;
 bode(gp,W);
 grid minor
 
+%%
+%Controlador
 numc = 0.0375*[1 0.1625];
 denc = [1 0.0078];
 gc = tf(numc,denc)
 
+%Sistema compensado
 numgt = conv(numc,nump);
 dengt = conv(denc,denp);
 gt = tf(numgt,dengt)
 
 margin(gt);
 grid minor;
+
+%%
+%Parámetros para simulink
+fs = 1000;
+
+%Bloque del compensador
+num_c = numc;
+den_c = denc;
+
+%Bloque del motor
+num_motor = nump;
+den_motor = den1;
+
+%Bloque del filtro
+num_filtro = [1];
+den_filtro = den2;
+
+sim('motor_modelo_prelab');
+
+
