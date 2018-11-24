@@ -3,8 +3,10 @@
 clear;clc
 fs = 100;
 
-num = 180;
-den = [1 5.1478 5.5483 9];
+num = 41.1;
+den1 = [1 0.8 2.07];
+den2 = [0.28 1];
+den = conv(den1,den2);
 
 
 %Respuesta a lazo abierto
