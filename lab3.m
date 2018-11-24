@@ -1,3 +1,4 @@
+%Preliminares
 clear; clc;
 %%
 %Bode de la función de transferencia de la planta original
@@ -36,21 +37,30 @@ margin(gt);
 grid minor;
 
 %%
+%Determinación de los polos y ceros a lazo cerrado
+
+gtf = feedback(gt,1)
+pzmap(gtf)
+
+%%
 %Parámetros para simulink
-fs = 1000;
+fs = 100;
 
 %Bloque del compensador
 num_c = numc;
 den_c = denc;
+Gc = tf(num_c,den_c)
 
 %Bloque del motor
 num_motor = nump;
 den_motor = den1;
+Gp = tf(num_motor,den_motor)
 
 %Bloque del filtro
 num_filtro = [1];
 den_filtro = den2;
+Gf = tf(num_filtro,den_filtro)
 
 sim('motor_modelo_prelab');
-
+plot(tout,simout);
 
