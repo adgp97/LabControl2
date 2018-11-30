@@ -31,4 +31,7 @@ plot(tout,y_closed_loop);
 grid on
 xlabel('Tiempo (s)');
 ylabel('Velocidad angular (rpm)');
-title('Respuesta a lazo abierto');
+title('Respuesta a lazo cerrado');
+hold on
+plot(tout,Wref)
+legend('Respuesta','Referencia');
